@@ -1,1 +1,26 @@
 /* Your styles goes here. */
+.block_draggable {
+  width: 240px;
+  height: 60px;
+  border: 2px solid gainsboro;
+  margin: 0 auto;
+  cursor: grab;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+  user-select: none;
+}
+.flex_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.block_result {
+  width: 243px;
+  height: 448px;
+  border: 2px solid gainsboro;
+  padding: 20px;
+  margin-left: 20px;
+}
