@@ -1,4 +1,12 @@
 /* Your styles goes here. */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+* {
+  box-sizing: border-box;
+}
+body {
+  font-family: 'Inter', sans-serif;
+}
+
 .block_draggable {
   width: 240px;
   height: 60px;
@@ -11,16 +19,38 @@
   align-items: center;
   margin-top: 10px;
   user-select: none;
+  font-family: 'Inter', sans-serif;
+  font-style: normal;
+  font-weight: 800;
+  font-size: 36px;
+  line-height: 44px;
+  color: #111827;
 }
 .flex_container {
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.block_result {
+.flex_second {
   width: 243px;
   height: 448px;
-  border: 2px solid gainsboro;
   padding: 20px;
   margin-left: 20px;
+  border: 2px dashed #C4C4C4;
+  border-radius: 6px;
+  user-select: none;
+}
+.flex_second_lighting {
+  width: 243px;
+  height: 448px;
+  padding: 20px;
+  margin-left: 20px;
+  border: 2px dashed #C4C4C4;
+  border-radius: 6px;
+  user-select: none;
+  background: #F0F9FF;
+}
+.one-element {
+  width: 0;
+  height: 0;
 }

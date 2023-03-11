@@ -4,6 +4,10 @@
 dist
 tmp
 /out-tsc
+/.vscode
+.vscode
+/e2e
+e2e
 
 # dependencies
 node_modules
