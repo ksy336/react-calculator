@@ -1,23 +1,40 @@
 import React, { useState } from 'react';
 import { DragDropContext, Draggable, DraggableProvided, DraggableStateSnapshot } from 'react-beautiful-dnd';
 import List from '../List/List';
-import Card from '../Card/Card';
+import Card, { PanelInterface } from '../LeftBlock/LeftBlock';
+import { panelsPart } from '../../utils/constants';
 import styles from '../../app/app.module.scss';
+import LeftBlock from '../LeftBlock/LeftBlock';
 
 const DraggableComponent = () => {
   const [draggable, setDraggable] = useState(false);
+  const panelItemsCopy: any = [...panelsPart];
   const [blocks, setBlocks] = useState({
-      available: [
-        {name: " 0 "},
-        {name: "/ х - +"},
-        {name: "World3"},
-        {name: "World4"},
-      ],
-      assigned: [
-        {name: ""}
+    available: [
+      {
+      id: "left",
+      name: panelItemsCopy
+      }
+    ],
+    assigned: [
+      {
+      id: "right",
+      name: []
+      }
       ]
-    }
-  );
+})
+  // const [blocks, setBlocks] = useState({
+  //     available: [
+  //       // {name: " "   },
+  //       {name: "World3"},
+  //       {name: "World4"},
+  //     ],
+  //     assigned: [
+  //       {name: ""}
+  //     ]
+  //   }
+  // );
+
   const removeFromList = (list: any, index: number) => {
     const result = Array.from(list);
     const [removed] = result.splice(index, 1);
@@ -30,8 +47,8 @@ const DraggableComponent = () => {
   }
   const handleOnDragEnd = (result: any) => {
     if (!result.destination) return;
-    setDraggable(true);
     const listCopy: any = {...blocks};
+
     const sourceList = listCopy[result.source.droppableId];
     const [removedElement, newSourceList] = removeFromList(sourceList, result.source.index)
     listCopy[result.source.droppableId] = newSourceList;
@@ -40,21 +57,19 @@ const DraggableComponent = () => {
     listCopy[result.destination.droppableId] = addToList(destinationList, result.destination.index, removedElement)
     setBlocks(listCopy);
 
-    // setDraggable(false);
+    setDraggable(false);
   }
-  console.log(blocks)
-
 
   return (
     <>
-      <DragDropContext onDragEnd={handleOnDragEnd}>
+      <DragDropContext onDragEnd={handleOnDragEnd} onDragStart={() => {setDraggable(true)}}>
         <div className={styles.flex_container}>
           <div className={styles.flex_first}>
             <List name="available" onDragEnd={handleOnDragEnd}>
-              {blocks.available.map((block, index: number) => (
+              {blocks.available.map((block , index: number) => (
                 <Draggable
-                  key={block.name}
-                  draggableId={block.name}
+                  key={index}
+                  draggableId={block.id}
                   index={index}
                 >
                   {(provided: DraggableProvided | any , snapshot: DraggableStateSnapshot) => (
@@ -63,7 +78,7 @@ const DraggableComponent = () => {
                       {...provided.dragHandleProps}
                       ref={provided.innerRef}
                     >
-                      <Card data={block} />
+                        <LeftBlock data={block.name}  />
                     </div>
                   )}
                 </Draggable>
@@ -78,7 +93,7 @@ const DraggableComponent = () => {
               {blocks.assigned.map((block, index: number) => (
                 <Draggable
                   key={index}
-                  draggableId={index.toString()}
+                  draggableId={block.id}
                   index={index}
                 >
                   {(provided: DraggableProvided | any , snapshot: DraggableStateSnapshot) => (
@@ -87,8 +102,9 @@ const DraggableComponent = () => {
                       {...provided.dragHandleProps}
                       ref={provided.innerRef}
                     >
-                      {/*{blocks.assigned.length === 1 ? <div className="one-element"/> : <Card data={block}/>}*/}
-                      <Card data={block}/>
+                      <RightBlock />
+                      {/*{blocks.assigned.length === 1 ? <div className="one-element"/> : <LeftBlock data={block}/>}*/}
+                      {/*<LeftBlock data={block}/>*/}
                     </div>
                   )}
                 </Draggable>
