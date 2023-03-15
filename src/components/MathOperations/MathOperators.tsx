@@ -1,14 +1,12 @@
 import React from 'react';
 import "./MathOperators.scss";
-import styles from '../../app/app.module.scss';
-import { IButton } from '../LeftBlock/LeftBlock';
 
 type OperatorsProps = {
   text: string;
 }
 const MathOperators = ({text}: OperatorsProps) => {
   return (
-      <div className="operators">
+      <div className="operator-item">
         {/*{operators.map((operator, index) => (*/}
         {/*  <div className="operator-item" key={index}>*/}
         {/*    {operator}*/}

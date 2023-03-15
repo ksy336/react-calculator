@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { DragDropContext, Draggable, DraggableProvided, DraggableStateSnapshot } from 'react-beautiful-dnd';
 import List from '../List/List';
-import Card, { PanelInterface } from '../LeftBlock/LeftBlock';
 import { panelsPart } from '../../utils/constants';
 import styles from '../../app/app.module.scss';
 import LeftBlock from '../LeftBlock/LeftBlock';
+import RightBlock from '../RightBlock/RightBlock';
 
 const DraggableComponent = () => {
   const [draggable, setDraggable] = useState(false);
@@ -59,7 +59,7 @@ const DraggableComponent = () => {
 
     setDraggable(false);
   }
-
+  console.log(blocks)
   return (
     <>
       <DragDropContext onDragEnd={handleOnDragEnd} onDragStart={() => {setDraggable(true)}}>
@@ -102,9 +102,7 @@ const DraggableComponent = () => {
                       {...provided.dragHandleProps}
                       ref={provided.innerRef}
                     >
-                      <RightBlock />
-                      {/*{blocks.assigned.length === 1 ? <div className="one-element"/> : <LeftBlock data={block}/>}*/}
-                      {/*<LeftBlock data={block}/>*/}
+                      <RightBlock data={block.name} />
                     </div>
                   )}
                 </Draggable>

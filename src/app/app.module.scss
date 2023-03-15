@@ -7,7 +7,10 @@ body {
   font-family: 'Inter', sans-serif;
 }
 
-.block_draggable {
+.block_draggable,
+.block_draggable__display,
+.block_draggable__numbers,
+.block_draggable__equal{
   width: 240px;
   height: 60px;
   border: 2px solid gainsboro;
@@ -18,12 +21,30 @@ body {
   justify-content: center;
   align-items: center;
   user-select: none;
+  -webkit-box-shadow: 1px 11px 8px 0px rgba(34, 60, 80, 0.2);
+  -moz-box-shadow: 1px 11px 8px 0px rgba(34, 60, 80, 0.2);
+  box-shadow: 1px 11px 8px 0px rgba(34, 60, 80, 0.2);
 }
-
+.block_draggable__display {
+  padding: 4px 8px;
+}
+.block_draggable__numbers {
+  width: 240px;
+  height: 224px;
+}
+.block_draggable__equal {
+  width: 240px;
+  height: 72px;
+  margin-bottom: 0;
+}
 .flex_container {
   display: flex;
   justify-content: center;
   align-items: center;
+  padding-top: 106px;
+}
+.flex_first {
+
 }
 .flex_second {
   width: 243px;
@@ -47,4 +68,10 @@ body {
 .one-element {
   width: 0;
   height: 0;
+}
+.num-block {
+  width: 240px;
+  height: 224px;
+  display: flex;
+  justify-content: space-between;
 }

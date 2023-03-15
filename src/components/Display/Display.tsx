@@ -1,17 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import "./Display.scss";
 import styles from '../../app/app.module.scss';
 
 type DisplayProps = {
   name: string
 }
-const Display = ({name}: DisplayProps) => {
+const Display = () => {
+  const [output, setOutPut] = useState(0);
   return (
-    <div className={styles.block_draggable}>
       <div className="output">
-        {name}
+        {output}
       </div>
-    </div>
   );
 };
 

@@ -13,7 +13,8 @@ export interface PanelInterface  {
   secondClass?: string,
   thirdClass?: string,
   remove: boolean,
-  buttons?: IButton[]
+  buttons?: IButton[],
+  status: string,
 }
 
 type LeftBlockProps = {
@@ -21,7 +22,7 @@ type LeftBlockProps = {
 }
 const LeftBlock = ({data}: LeftBlockProps) => {
   return (
-    <div className={styles.block_draggable}>
+    <>
       {data?.map((block: PanelInterface) => (
         <Column
           key={block.id}
@@ -30,9 +31,10 @@ const LeftBlock = ({data}: LeftBlockProps) => {
           thirdClass={block.thirdClass}
           remove={block.remove}
           buttons={block.buttons}
+          status={"constructor"}
         />
       ))}
-    </div>
+    </>
   );
 };
 
